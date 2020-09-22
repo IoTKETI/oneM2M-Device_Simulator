@@ -1,0 +1,76 @@
+{
+    "cse": {
+        "ip": "127.0.0.1",
+        "port": 7579,
+        "id": "Mobius2",
+        "name": "Mobius",
+        "release": "1",
+        "acp_required": false
+    },
+    "app": {
+        "ip": "127.0.0.1",
+        "port": 8369
+    },
+    "templates": [{
+            "stream": "up",
+            "type": "Temperature",
+            "unit": "°C",
+            "min": 18,
+            "max": 22,
+            "freq": 10,
+            "icon": "images/icon-thermo.png"
+        },
+        {
+            "stream": "up",
+            "type": "Humidity",
+            "unit": "%",
+            "min": 40,
+            "max": 50,
+            "freq": 10,
+            "icon": "images/icon-water.png"
+        },
+        {
+            "stream": "up",
+            "type": "Luminosity",
+            "unit": "Lux",
+            "min": 200,
+            "max": 500,
+            "freq": 5,
+            "icon": "images/icon-sun.png"
+        },
+        {
+            "stream": "up",
+            "type": "Power",
+            "unit": "Kw",
+            "min": 1000,
+            "max": 2000,
+            "freq": 10,
+            "icon": "images/icon-meter.png"
+        },
+        {
+            "stream": "up",
+            "type": "Presence",
+            "unit": "",
+            "min": 0,
+            "max": 1,
+            "freq": 10,
+            "icon": "images/icon-motion.jpg"
+        },
+        {
+            "stream": "down",
+            "type": "Lamp",
+            "unit": "",
+            "min": 0,
+            "max": 1,
+            "icon": "images/icon-light.png"
+        },
+        {
+            "stream": "down",
+            "type": "buzzer",
+            "unit": "",
+            "min": 0,
+            "max": 1,
+            "icon": "https://image.flaticon.com/icons/svg/216/216295.svg"
+        }
+    ]
+}
