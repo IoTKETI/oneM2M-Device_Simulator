@@ -289,7 +289,7 @@ function createDataContainer(name,typeIndex){
 		json: {
 			"m2m:cnt":{
 				"rn":"DATA",
-				"mni":10	
+				"mni":10000
 			}
 		}
 	};
