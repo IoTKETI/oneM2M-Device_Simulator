@@ -80,23 +80,27 @@ app.listen(config.app.port, function () {
 
 function listen(name,typeIndex){
 	app.post('/S'+name, function (req, res) {
-		console.log("\n[NOTIFICATION]")
-		console.log(req.body["m2m:sgn"].nev.rep["m2m:cin"]);
-		var content;
-		if(req.body["m2m:sgn"].nev.rep["m2m:cin"].con == "1"){
-			content = "1";
-		} else {
-			content = "0";
+
+		var req_body = req.body["m2m:sgn"].nev.rep["m2m:cin"];
+		if(req_body != undefined) {
+			console.log("\n[NOTIFICATION]")
+			console.log(req.body["m2m:sgn"].nev.rep["m2m:cin"]);
+			var content;
+			if (req.body["m2m:sgn"].nev.rep["m2m:cin"].con == "1") {
+				content = "1";
+			} else {
+				content = "0";
+			}
+			console.log(templates[typeIndex].type + " " + name + " is switched to " + content);
+
+			updateDevice(typeIndex, name, content);
+			res.set("X-M2M-RSC", 2000);
+			res.status(200);
+			if (cseRelease != "1") {
+				res.set("X-M2M-RVI", cseRelease);
+			}
+			res.send();
 		}
-		console.log(templates[typeIndex].type+" "+name+" is switched to "+content);
-		
-		updateDevice(typeIndex, name, content);
-		res.set("X-M2M-RSC",2000);
-		res.status(200);
-		if(cseRelease != "1") {
-			res.set("X-M2M-RVI",cseRelease);
-		}
-		res.send();
 	});
 }
 
@@ -341,7 +345,7 @@ function createCommandContainer(name,typeIndex){
 		json: {
 			"m2m:cnt":{
 				"rn":"COMMAND",
-				"mni":10	
+				"mni":10000
 			}
 		}
 	};
